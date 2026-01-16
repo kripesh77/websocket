@@ -6,8 +6,13 @@ wss.on("connection", function (socket) {
   console.log("User connected");
 
   socket.on("message", (e) => {
+    console.log(e.toString());
     if (e.toString() === "ping") {
       socket.send("pong");
     }
+  });
+
+  socket.on("close", () => {
+    console.log("WebSocket disconnected");
   });
 });
